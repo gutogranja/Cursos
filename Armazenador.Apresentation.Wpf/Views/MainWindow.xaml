@@ -1,0 +1,65 @@
+﻿<Controls:MetroWindow x:Class="Armazenador.Apresentation.Wpf.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls" 
+        xmlns:Dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
+        Dialog:DialogParticipation.Register="{Binding}"
+        xmlns:local="clr-namespace:Armazenador.Apresentation.Wpf"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto" 
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="Cadastrar Cursos" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5" FontSize="15" Text="Curso"/>
+            <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5" FontSize="15" Text="Carga Horária"/>
+            <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5" FontSize="15" Text="Valor"/>
+            <TextBox Grid.Row="0" Grid.Column="1" Margin="5" IsEnabled="{Binding EditarCurso}" Text="{Binding View.Descricao, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Curso" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+            <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Text="{Binding View.CargaHoraria, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Carga Horária" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+            <TextBox Grid.Row="2" Grid.Column="1" Margin="5" Text="{Binding View.Valor, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Valor" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <DataGrid SelectedItem="{Binding View}" ItemsSource="{Binding ListaCurso}" BorderThickness="3" BorderBrush="Black" GridLinesVisibility="All" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeRows="False" CanUserSortColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Curso" Binding="{Binding Descricao,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Width="200"/>
+                    <DataGridTextColumn Header="Carga Horária" Binding="{Binding CargaHoraria,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Width="200"/>
+                    <DataGridTextColumn Header="Valor" Binding="{Binding Valor,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Width="200"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Orientation="Horizontal">
+                <Button Content="INCLUIR" Margin="5" ToolTip="Incluir dados do curso" Command="{Binding IncluirCommand}"/>
+                <Button Content="ALTERAR" Margin="5" ToolTip="Alterar dados do curso" Command="{Binding AlterarCommand}"/>
+                <Button Content="INATIVAR" Margin="5" ToolTip="Inativar o curso" Command="{Binding InativarCommand}"/>
+            </StackPanel>
+            <Button Grid.Column="1" Content="LIMPAR" Margin="5" ToolTip="Limpar dados da tela" Command="{Binding LimparTelaCommand}" HorizontalAlignment="Right"/>
+        </Grid>
+    </Grid>
+</Controls:MetroWindow>

@@ -16,7 +16,6 @@ namespace Armazenador.Apresentation.Wpf.ViewModels
     {
         IDialogCoordinator dialog;
         private readonly ICursoService cursoService;
-
         public DelegateCommand IncluirCommand { get; set; }
         public DelegateCommand AlterarCommand { get; set; }
         public DelegateCommand InativarCommand { get; set; }
@@ -79,7 +78,7 @@ namespace Armazenador.Apresentation.Wpf.ViewModels
             IncluirCommand = new DelegateCommand(Incluir, () => !ModoEdicao).ObservesProperty(() => ModoEdicao);
             AlterarCommand = new DelegateCommand(Alterar, () => ModoEdicao).ObservesProperty(() => ModoEdicao);
             InativarCommand = new DelegateCommand(Inativar, () => ModoEdicao).ObservesProperty(() => ModoEdicao);
-            LimparTelaCommand = new DelegateCommand(BuscarCursos);
+            LimparTelaCommand = new DelegateCommand(Limpar);
             BuscarCursos();
         }
 

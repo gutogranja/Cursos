@@ -44,7 +44,7 @@
             <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5" FontSize="15" Text="Valor"/>
             <TextBox Grid.Row="0" Grid.Column="1" Margin="5" IsEnabled="{Binding EditarCurso}" Text="{Binding View.Descricao, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Curso" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
             <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Text="{Binding View.CargaHoraria, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource Converters}}" materialDesign:HintAssist.Hint="Carga Horária"/>
-            <TextBox Grid.Row="2" Grid.Column="1" Margin="5" Text="{Binding View.Valor, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, StringFormat=N2}" materialDesign:HintAssist.Hint="Valor" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+            <TextBox Grid.Row="2" Grid.Column="1" Margin="5" Text="{Binding View.Valor, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, StringFormat=N2, Converter={StaticResource Converters}}" materialDesign:HintAssist.Hint="Valor" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
         </Grid>
         <Grid Grid.Row="1">
             <DataGrid SelectedItem="{Binding View}" ItemsSource="{Binding ListaCurso}" BorderThickness="3" BorderBrush="Black" GridLinesVisibility="All" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeRows="False" CanUserSortColumns="False">
